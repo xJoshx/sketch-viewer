@@ -21,6 +21,7 @@ const DocumentViewer = () => {
     share: {
       version: {
         document: {
+          name: documentName,
           artboards: { entries },
         },
       },
@@ -29,7 +30,7 @@ const DocumentViewer = () => {
 
   return (
     <>
-      <HeaderDocumentViewer />
+      <HeaderDocumentViewer>{documentName}</HeaderDocumentViewer>
       <ArtboardList>
         {entries.map(({ name, files }) => (
           <ArtboardList.Item
