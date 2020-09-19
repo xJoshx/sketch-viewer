@@ -1,48 +1,96 @@
 import React from "react";
 import styled from "styled-components";
-import sketchLogoSrc from "../assets/sketch-logo.svg";
-import separator from "../assets/separator.svg";
+import { useHistory } from "react-router-dom";
+import {
+  Title,
+  NavigationWrapper,
+  CurrentPage,
+  SketchLogo,
+  Separator,
+  TitleWrapper,
+  HeaderButton,
+  NavigationButton,
+  RightArrowIcon,
+  LeftArrowIcon,
+  CloseIcon,
+  HeaderActions,
+} from "./style";
 
 const HeaderWrapper = styled.nav`
-  padding: 16px;
+  padding: ${({ noPadding }) => (noPadding ? 0 : "16px")};
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+  height: 64px;
 `;
 
-const SketchLogo = styled.img`
-  height: 27px;
-  width: auto;
+const HeaderWrapperSubpage = styled(HeaderWrapper)`
+  position: relative;
+  justify-content: center;
 `;
 
-const Separator = styled.img.attrs(() => ({
-  src: separator,
-}))`
-  display: block;
-  height: 32px;
-  margin: 0 16px;
-`;
+const Header = ({ children, noPadding }) => (
+  <HeaderWrapper noPadding={noPadding}>{children}</HeaderWrapper>
+);
 
-const Title = styled.h1`
-  font-family: Helvetica;
-  font-size: 16px;
-  color: #000000;
-  letter-spacing: 0;
-  line-height: 16px;
-`;
+const HeaderSubpage = ({ children, noPadding }) => (
+  <HeaderWrapperSubpage noPadding={noPadding}>{children}</HeaderWrapperSubpage>
+);
 
-const Header = ({ children }) => <HeaderWrapper>{children}</HeaderWrapper>;
+const CloseButton = ({ onClick }) => (
+  <HeaderButton onClick={onClick}>
+    <CloseIcon />
+  </HeaderButton>
+);
+
+const LeftButton = ({ onClick }) => (
+  <NavigationButton onClick={onClick}>
+    <LeftArrowIcon />
+  </NavigationButton>
+);
+
+const RightButton = ({ onClick }) => (
+  <NavigationButton onClick={onClick}>
+    <RightArrowIcon />
+  </NavigationButton>
+);
+
+const Navigation = ({ children }) => (
+  <NavigationWrapper>
+    <LeftButton />
+    <CurrentPage>{children}</CurrentPage>
+    <RightButton />
+  </NavigationWrapper>
+);
+
 Header.Title = Title;
+Header.CloseButton = CloseButton;
+Header.Navigation = Navigation;
 
 const HeaderDocumentViewer = ({ children }) => (
   <Header>
-    <SketchLogo src={sketchLogoSrc} />
+    <SketchLogo />
     <Separator />
     <Header.Title>{children}</Header.Title>
   </Header>
 );
-const HeaderArtboardViewer = () => <Header>HeaderArtboardViewer</Header>;
+
+const HeaderArtboardViewer = ({ children }) => {
+  const history = useHistory();
+
+  return (
+    <HeaderSubpage noPadding>
+      <HeaderActions>
+        <Header.CloseButton onClick={() => history.goBack()} />
+        <Header.Navigation>9 / 10</Header.Navigation>
+      </HeaderActions>
+      <TitleWrapper>
+        <Header.Title>{children}</Header.Title>
+      </TitleWrapper>
+    </HeaderSubpage>
+  );
+};
 
 export { HeaderDocumentViewer, HeaderArtboardViewer };

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { client } from "../App";
 import { FETCH_DOCUMENTS_QUERY } from "../fetchDocumentsQuery.js";
+import { HeaderArtboardViewer } from "../Header";
 
 const ArtboardWrapper = styled.div`
   display: flex;
@@ -39,9 +40,12 @@ const ArtboardViewer = () => {
   const selectedArtboard = entries.find(({ name }) => name === artboardId);
 
   return (
-    <ArtboardWrapper>
-      <Artboard src={selectedArtboard.files[1].url} />
-    </ArtboardWrapper>
+    <>
+      <HeaderArtboardViewer>{selectedArtboard.name}</HeaderArtboardViewer>
+      <ArtboardWrapper>
+        <Artboard src={selectedArtboard.files[1].url} />
+      </ArtboardWrapper>
+    </>
   );
 };
 
