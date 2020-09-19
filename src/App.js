@@ -22,8 +22,11 @@ const App = () => {
         <AppWrapper>
           <Router>
             <Switch>
-              <Route exact path="/" children={<DocumentViewer />} />
-              <Route path="/artboard/:id" children={<ArtboardViewer />} />
+              <Route exact path="/:documentId" children={<DocumentViewer />} />
+              <Route
+                path="/:documentId/artboard/:artboardId"
+                children={<ArtboardViewer />}
+              />
             </Switch>
           </Router>
         </AppWrapper>
@@ -33,3 +36,4 @@ const App = () => {
 };
 
 export default App;
+export { client };

@@ -43,9 +43,9 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const ArtboardListItem = ({ name, src }) => {
+const ArtboardListItem = ({ documentId, name, src }) => {
   return (
-    <StyledLink to={`/artboard/${name}`}>
+    <StyledLink to={`${documentId}/artboard/${name}`}>
       <ThumbnailWrapper>
         <Thumbnail src={src} />
       </ThumbnailWrapper>

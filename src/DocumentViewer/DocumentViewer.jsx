@@ -1,42 +1,15 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
 import { ArtboardList } from "./ArtboardList";
-
-const FETCH_DOCUMENTS_QUERY = gql`
-  query fetchDocuments($documentId: String) {
-    share(shortId: $documentId) {
-      shortId
-      version {
-        document {
-          name
-          artboards {
-            entries {
-              name
-              isArtboard
-              files {
-                url
-                height
-                width
-                scale
-                thumbnails {
-                  url
-                  height
-                  width
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { FETCH_DOCUMENTS_QUERY } from "../fetchDocumentsQuery";
 
 const Loading = () => <div>loading...</div>;
 
-export const DocumentViewer = () => {
+const DocumentViewer = () => {
+  const { documentId } = useParams();
   const { data, loading, error } = useQuery(FETCH_DOCUMENTS_QUERY, {
-    variables: { documentId: "Y8wDM" },
+    variables: { documentId },
   });
 
   if (loading) return <Loading />;
@@ -53,13 +26,18 @@ export const DocumentViewer = () => {
     },
   } = data;
 
-  console.log(entries);
-
   return (
     <ArtboardList>
       {entries.map(({ name, files }) => (
-        <ArtboardList.Item key={name} name={name} src={files[0].url} />
+        <ArtboardList.Item
+          key={name}
+          documentId={documentId}
+          name={name}
+          src={files[0].url}
+        />
       ))}
     </ArtboardList>
   );
 };
+
+export { DocumentViewer };
