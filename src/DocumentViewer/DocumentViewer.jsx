@@ -1,5 +1,6 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
+import { ArtboardList } from "./ArtboardList";
 
 const FETCH_DOCUMENTS_QUERY = gql`
   query fetchDocuments($documentId: String) {
@@ -42,5 +43,23 @@ export const DocumentViewer = () => {
   if (error) return <p>ERROR</p>;
   if (!data) return <p>Not found</p>;
 
-  return <div>Document viewer</div>;
+  const {
+    share: {
+      version: {
+        document: {
+          artboards: { entries },
+        },
+      },
+    },
+  } = data;
+
+  console.log(entries);
+
+  return (
+    <ArtboardList>
+      {entries.map(({ name, files }) => (
+        <ArtboardList.Item key={name} name={name} src={files[0].url} />
+      ))}
+    </ArtboardList>
+  );
 };

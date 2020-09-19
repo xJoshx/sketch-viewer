@@ -4,7 +4,9 @@ import { ThemeProvider } from "styled-components";
 const theme = {
   colors: {
     black: "rgba(0,0,0)",
+    lightGrey: "rgba(0,0,0,0.1)",
     grey: "rgba(0,0,0,0.4)",
+    darkGrey: "rgba(0,0,0,0.65)",
   },
   fonts: [
     "-apple-system",
@@ -29,9 +31,11 @@ const theme = {
     3: "12px",
     4: "16px",
     5: "20px",
-    6: "32px",
-    7: "48px",
-    8: "64px",
+    6: "24px",
+    7: "32px",
+    8: "48px",
+    9: "64px",
+    10: "80px",
   },
 };
 
