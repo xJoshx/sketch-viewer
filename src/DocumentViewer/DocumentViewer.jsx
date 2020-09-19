@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { ArtboardList } from "./ArtboardList";
 import { FETCH_DOCUMENTS_QUERY } from "../fetchDocumentsQuery";
+import { HeaderDocumentViewer } from "../Header";
 
 const Loading = () => <div>loading...</div>;
 
@@ -27,16 +28,19 @@ const DocumentViewer = () => {
   } = data;
 
   return (
-    <ArtboardList>
-      {entries.map(({ name, files }) => (
-        <ArtboardList.Item
-          key={name}
-          documentId={documentId}
-          name={name}
-          src={files[0].url}
-        />
-      ))}
-    </ArtboardList>
+    <>
+      <HeaderDocumentViewer />
+      <ArtboardList>
+        {entries.map(({ name, files }) => (
+          <ArtboardList.Item
+            key={name}
+            documentId={documentId}
+            name={name}
+            src={files[0].url}
+          />
+        ))}
+      </ArtboardList>
+    </>
   );
 };
 
