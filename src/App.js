@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Theme } from "./Theme";
+import { DocumentViewer } from "./DocumentViewer";
+import { ArtboardViewer } from "./ArtboardViewer";
 
-function App() {
+const AppWrapper = styled.div``;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Theme>
+      <AppWrapper>
+        <Router>
+          <Switch>
+            <Route exact path="/" children={<DocumentViewer />} />
+            <Route path="/artboard/:id" children={<ArtboardViewer />} />
+          </Switch>
+        </Router>
+      </AppWrapper>
+    </Theme>
   );
-}
+};
 
 export default App;
