@@ -57,11 +57,11 @@ const RightButton = ({ onClick }) => (
   </NavigationButton>
 );
 
-const Navigation = ({ children }) => (
+const Navigation = ({ children, handleNavigateLeft, handleNavigateRight }) => (
   <NavigationWrapper>
-    <LeftButton />
+    <LeftButton onClick={handleNavigateLeft} />
     <CurrentPage>{children}</CurrentPage>
-    <RightButton />
+    <RightButton onClick={handleNavigateRight} />
   </NavigationWrapper>
 );
 
@@ -77,14 +77,24 @@ const HeaderDocumentViewer = ({ children }) => (
   </Header>
 );
 
-const HeaderArtboardViewer = ({ children }) => {
+const HeaderArtboardViewer = ({
+  children,
+  currentPosition,
+  handleNavigateLeft,
+  handleNavigateRight,
+}) => {
   const history = useHistory();
 
   return (
     <HeaderSubpage noPadding>
       <HeaderActions>
         <Header.CloseButton onClick={() => history.goBack()} />
-        <Header.Navigation>9 / 10</Header.Navigation>
+        <Header.Navigation
+          handleNavigateLeft={handleNavigateLeft}
+          handleNavigateRight={handleNavigateRight}
+        >
+          {currentPosition}
+        </Header.Navigation>
       </HeaderActions>
       <TitleWrapper>
         <Header.Title>{children}</Header.Title>

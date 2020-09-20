@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { HeaderArtboardViewer } from "../Header";
@@ -18,14 +18,55 @@ const Artboard = styled.img`
   max-width: 100%;
 `;
 
+const CurrentPositionSeparator = styled.span`
+  margin: 0 8px;
+`;
+
+const CurrentPosition = ({ current, total }) => (
+  <>
+    {current}
+    <CurrentPositionSeparator>/</CurrentPositionSeparator>
+    {total}
+  </>
+);
+
 const ArtboardViewer = ({ artboards }) => {
   const { artboardId } = useParams();
+  const [currentArtboardPosition, setCurrentArtboardPosition] = useState(
+    artboards.findIndex(({ name }) => name === artboardId)
+  );
+  const [selectedArtboard, setSelectedArtboard] = useState(
+    artboards[currentArtboardPosition]
+  );
 
-  const selectedArtboard = artboards.find(({ name }) => name === artboardId);
+  useEffect(() => {
+    setSelectedArtboard(artboards[currentArtboardPosition]);
+  }, [currentArtboardPosition]);
+
+  const handleNavigateLeft = () => {
+    if (currentArtboardPosition === 0) return;
+    setCurrentArtboardPosition(currentArtboardPosition - 1);
+  };
+
+  const handleNavigateRight = () => {
+    if (currentArtboardPosition + 1 === artboards.length) return;
+    setCurrentArtboardPosition(currentArtboardPosition + 1);
+  };
 
   return (
     <>
-      <HeaderArtboardViewer>{selectedArtboard.name}</HeaderArtboardViewer>
+      <HeaderArtboardViewer
+        currentPosition={
+          <CurrentPosition
+            current={currentArtboardPosition + 1}
+            total={artboards.length}
+          />
+        }
+        handleNavigateLeft={handleNavigateLeft}
+        handleNavigateRight={handleNavigateRight}
+      >
+        {selectedArtboard.name}
+      </HeaderArtboardViewer>
       <ArtboardWrapper>
         <Artboard src={selectedArtboard.files[1].url} />
       </ArtboardWrapper>
