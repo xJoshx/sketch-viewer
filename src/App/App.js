@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { Theme } from "./Theme";
-import { DocumentViewer } from "./DocumentViewer";
-import { ArtboardViewer } from "./ArtboardViewer";
-import { FETCH_DOCUMENTS_QUERY } from "./fetchDocumentsQuery";
-import { GlobalStyles } from "./globalStyles";
+import { Theme } from "../Theme";
+import { DocumentViewer } from "../DocumentViewer";
+import { ArtboardViewer } from "../ArtboardViewer";
+import { FETCH_DOCUMENTS_QUERY } from "../fetchDocumentsQuery";
+import { GlobalStyles } from "../globalStyles";
 
 const GRAPHQL_URI = "https://graphql.sketch.cloud/api";
 
@@ -75,4 +75,4 @@ const App = () => (
   </Router>
 );
 
-export { App as default, client };
+export { App, client };
