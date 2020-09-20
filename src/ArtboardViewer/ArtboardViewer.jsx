@@ -9,8 +9,8 @@ const ArtboardWrapper = styled.div`
   flex: 1;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 64px);
-  padding: 48px;
+  height: calc(100vh - ${({ theme }) => theme.space[8]});
+  padding: ${({ theme }) => theme.space[7]};
   box-sizing: border-box;
 `;
 
@@ -20,7 +20,7 @@ const Artboard = styled.img`
 `;
 
 const CurrentPositionSeparator = styled.span`
-  margin: 0 8px;
+  margin: 0 ${({ theme }) => theme.space[1]};
 `;
 
 const CurrentPosition = ({ current, total }) => (
