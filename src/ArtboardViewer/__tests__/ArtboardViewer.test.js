@@ -1,4 +1,5 @@
 import React from "react";
+import "@testing-library/jest-dom/extend-expect";
 import { render, wait } from "@testing-library/react";
 import { MemoryRouter, Switch, Route } from "react-router-dom";
 import { Theme } from "../../Theme";
@@ -6,17 +7,18 @@ import { ArtboardViewer } from "../ArtboardViewer";
 import mockData from "../__mocks__/mockData";
 
 const MOCK_DOCUMENT_ID = "Y8wDM";
-const MOCK_ARTBOARD_ID = "Etch%20a%20Sketch";
+const MOCK_ARTBOARD_ID = "Lisa";
 
 const renderComponent = (data = mockData) =>
   render(
     <Theme>
       <MemoryRouter
         initialEntries={[`/${MOCK_DOCUMENT_ID}/artboard/${MOCK_ARTBOARD_ID}`]}
+        initialIndex={0}
       >
         <Switch>
           <Route
-            path="/:id"
+            path={`/:documentId/artboard/:artboardId`}
             render={() => <ArtboardViewer artboards={data} />}
           />
         </Switch>
@@ -25,18 +27,12 @@ const renderComponent = (data = mockData) =>
   );
 
 describe("ArtboardViewer", () => {
-  it("should render all the artboards that receive from props", () => {
+  it("should render the artboard with the name", async () => {
     const { getByText, getByAltText } = renderComponent();
 
-    wait(() => {
-      expect(getByText(/Xerox alto/)).toBeInTheDocument();
-      expect(getByAltText(/Xerox alto artboard thumbnail/)).toBeInTheDocument();
-      expect(getByText(/Xerox RedHat 8/)).toBeInTheDocument();
-      expect(
-        getByAltText(/Xerox RedHat 8 artboard thumbnail/)
-      ).toBeInTheDocument();
-      expect(getByText(/AmigaOS/)).toBeInTheDocument();
-      expect(getByAltText(/AmigaOS artboard thumbnail/)).toBeInTheDocument();
+    await wait(() => {
+      expect(getByText(/Lisa/)).toBeInTheDocument();
+      expect(getByAltText(/Lisa artboard/)).toBeInTheDocument();
     });
   });
 });
