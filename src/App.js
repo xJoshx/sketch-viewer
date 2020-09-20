@@ -18,7 +18,9 @@ const client = new ApolloClient({
 
 const Loading = () => <div>loading...</div>;
 
-const AppWrapper = styled.div``;
+const AppWrapper = styled.div`
+  margin-top: 64px;
+`;
 
 const SketchViewer = () => {
   const location = useLocation();

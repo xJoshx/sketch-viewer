@@ -24,10 +24,12 @@ const HeaderWrapper = styled.nav`
   display: flex;
   align-items: center;
   height: 64px;
+  position: fixed;
+  width: 100%;
+  top: 0;
 `;
 
 const HeaderWrapperSubpage = styled(HeaderWrapper)`
-  position: relative;
   justify-content: center;
 `;
 

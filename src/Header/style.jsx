@@ -38,6 +38,13 @@ const Title = styled.h1`
   color: #000000;
   letter-spacing: 0;
   line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media only screen and (max-width: 414px) {
+    max-width: 120px;
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -80,6 +87,10 @@ const HeaderActions = styled.div`
   position: absolute;
   display: flex;
   left: 0;
+
+  @media only screen and (max-width: 767px) {
+    position: relative;
+  }
 `;
 
 export {

@@ -8,7 +8,7 @@ const ArtboardWrapper = styled.div`
   flex: 1;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 64px);
   padding: 48px;
   box-sizing: border-box;
 `;
