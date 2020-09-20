@@ -48,7 +48,9 @@ const SketchViewer = () => {
         <Route
           exact
           path="/:documentId"
-          children={<DocumentViewer name={documentName} artboards={entries} />}
+          children={
+            <DocumentViewer documentName={documentName} artboards={entries} />
+          }
         />
         <Route
           path="/:documentId/artboard/:artboardId"
