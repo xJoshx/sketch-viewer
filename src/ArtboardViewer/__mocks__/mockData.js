@@ -129,6 +129,54 @@ const mockData = [
     isArtboard: true,
     name: "Lisa",
   },
+  {
+    __typename: "Artboard",
+    files: [
+      {
+        __typename: "File",
+        height: 1920,
+        scale: 1,
+        thumbnails: [
+          {
+            __typename: "Thumbnail",
+            height: 445,
+            url:
+              "https://resources-live.sketch.cloud/files/adb77083-d446-431c-962b-4f9875e4290f.m.png?Expires=1600822800&Signature=bZTl7-MQdJYYAyCOKwy9g~9OkBEr6UEeSreUBFor5huanabdPgnW2Rz3Nsz9MbJSaBbnZ7b7J9fMwRNN9vXERHuadq8A2UIJ66E60IxaTElQb8~mNG~rAgt2gpPMcX10LQQ6EbSmjjhnW1JKli-RrAvZzBJuAwL784BVpp45ukc_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA",
+            width: 250,
+          },
+          {
+            __typename: "Thumbnail",
+            height: 1334,
+            url:
+              "https://resources-live.sketch.cloud/files/adb77083-d446-431c-962b-4f9875e4290f.l.png?Expires=1600822800&Signature=n9PFnwodbzjy2gKlMWxsvAeu0Af8hzA2VBh1wzqDgtVD6NUZR8ABA8WzdeTYzuqTOWQUHjEDXPKNqdi5i~HbxvFpgHVa9rOdFKDOW3tJcYbubCELE2x~jB~1eKtCe~aO7VDkm91NXZyB-Oz500vtiO7pRnY43~MaQfUjoYot2FI_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA",
+            width: 750,
+          },
+        ],
+        url:
+          "https://resources-live.sketch.cloud/files/adb77083-d446-431c-962b-4f9875e4290f.png?Expires=1600822800&Signature=vSC-5GaPfq1KszU-FuqXsJzys4xkYe8M-RnxsuaeQHh7fDhjAm1xLxaWnkAkOUQtxHamIobdPwgjE-zb-QZKPn7ysqgZ~sXQy3F8wi3tbkY3sKT2Fr8rCtXgt1cwfTLYEpmlm2P~yolq4uwlQqUOPAWQvHSetUl2qIVOtDqoVvE_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA",
+        width: 1080,
+      },
+      {
+        __typename: "File",
+        height: 3840,
+        scale: 2,
+        thumbnails: [
+          {
+            __typename: "Thumbnail",
+            height: 3840,
+            url:
+              "https://resources-live.sketch.cloud/files/4f1b1463-e384-4def-96f1-f50140ff1a2a.png?Expires=1600822800&Signature=C7UDE2~HlAGQLns8axb~eUd~duAktXF5ft8c5IbP9k05vbo5nbDTR~V1FBiWEkL0ZQnz7vnJHeqKo3x2eLoF7rwDfY-hpUSDP5WRzG4oL1UB9xR1I2Al-0EoXK~MD3ZHo8cH0kWjfwAC2vLwFYkbcm81TVbeGMFR5BWxL5JATtI_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA",
+            width: 2160,
+          },
+        ],
+        url:
+          "https://resources-live.sketch.cloud/files/4f1b1463-e384-4def-96f1-f50140ff1a2a.png?Expires=1600822800&Signature=C7UDE2~HlAGQLns8axb~eUd~duAktXF5ft8c5IbP9k05vbo5nbDTR~V1FBiWEkL0ZQnz7vnJHeqKo3x2eLoF7rwDfY-hpUSDP5WRzG4oL1UB9xR1I2Al-0EoXK~MD3ZHo8cH0kWjfwAC2vLwFYkbcm81TVbeGMFR5BWxL5JATtI_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA",
+        width: 2160,
+      },
+    ],
+    isArtboard: true,
+    name: "Android 4",
+  },
 ];
 
 export default mockData;

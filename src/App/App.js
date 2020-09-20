@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -26,6 +26,7 @@ const AppWrapper = styled.div`
 const SketchViewer = () => {
   const location = useLocation();
   const documentId = location.pathname.split("/")[1];
+
   const { data, loading, error } = useQuery(FETCH_DOCUMENTS_QUERY, {
     variables: { documentId },
   });
@@ -65,14 +66,12 @@ const SketchViewer = () => {
 };
 
 const App = () => (
-  <Router>
-    <Theme>
-      <GlobalStyles />
-      <ApolloProvider client={client}>
-        <SketchViewer />
-      </ApolloProvider>
-    </Theme>
-  </Router>
+  <Theme>
+    <GlobalStyles />
+    <ApolloProvider client={client}>
+      <SketchViewer />
+    </ApolloProvider>
+  </Theme>
 );
 
 export { App, client };

@@ -33,6 +33,12 @@ describe("ArtboardViewer", () => {
     await wait(() => {
       expect(getByText(/Lisa/)).toBeInTheDocument();
       expect(getByAltText(/Lisa artboard/)).toBeInTheDocument();
+      expect(getByText(/3/)).toBeInTheDocument();
+      expect(getByText(/\//)).toBeInTheDocument();
+      expect(getByText(/4/)).toBeInTheDocument();
+      expect(getByAltText(/left arrow icon/)).toBeInTheDocument();
+      expect(getByAltText(/right arrow icon/)).toBeInTheDocument();
+      expect(getByAltText(/close icon/)).toBeInTheDocument();
     });
   });
 });
