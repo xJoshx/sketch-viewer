@@ -40,7 +40,6 @@
 
 - `HeaderArtboardViewer` I would think how to make it more composable, for example exporting the navigation component and the title, to avoid passing those props and make it cleaner for example to disable the navigation buttons when we reach the first/last element of the list. Also, some styles from there would be cool to improve like bigger navigation buttons with the different states. Also, I would rethink how to position the title and the navigation better, I'm not 100% happy with the approach I've taken.
 - Mobile design is not 100% perfect, specially for iPhone SE, I would like to polish it. The header title is not handling the names with big names that can overflow, I tried several approaches but none of them convinced me so for the sake of simplicity I just decided to exclude it
-- I would also update it for when navigating with the navigation controls and changing the artboard, the URL would change
 - Maybe the last fix is not the most elegant but I wanted to finish the coding challenge with it working. It's the one for updating the url after clicking on the navigation buttons.
 - I tried to have it running in production with `now` but gave me `CORS` . I know it's not needed but I would like to have it running there 😛
 
