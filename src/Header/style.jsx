@@ -44,6 +44,11 @@ const TitleWrapper = styled.div`
   display: block;
   width: 100%;
   text-align: center;
+
+  @media only screen and (max-width: 767px) {
+    text-align: right;
+    padding-right: 24px;
+  }
 `;
 
 const HeaderButton = styled.button`

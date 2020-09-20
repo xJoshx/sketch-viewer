@@ -8,6 +8,16 @@ const ArtboardListLayout = styled.div`
   grid-gap: 60px;
   padding: 24px;
   align-items: center;
+
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px;
+  }
+
+  @media only screen and (max-width: 414px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 16px;
+  }
 `;
 
 const ThumbnailWrapper = styled.div`
