@@ -49,6 +49,8 @@ In the project directory, you can run:
 
 ### `yarn start`
 
+> 💡 Rembember to add the `documentId` on the URL, like `http://localhost:3000/Y8wDM` or `http://localhost:3000/4W43q`
+
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
