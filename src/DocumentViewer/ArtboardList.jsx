@@ -57,7 +57,7 @@ const StyledLink = styled(Link)`
 const ArtboardListItem = ({ documentId, name, src }) => (
   <StyledLink to={`/${documentId}/artboard/${name}`}>
     <ThumbnailWrapper>
-      <Thumbnail src={src} />
+      <Thumbnail src={src} alt={`${name} artboard thumbnail`} />
     </ThumbnailWrapper>
     <ArtboardName>{name}</ArtboardName>
   </StyledLink>

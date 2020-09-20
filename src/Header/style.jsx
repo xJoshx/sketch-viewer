@@ -7,18 +7,22 @@ import rightArrowIcon from "../assets/arrow-right.svg";
 
 const CloseIcon = styled.img.attrs(() => ({
   src: closeIcon,
+  alt: "close icon",
 }))``;
 
 const LeftArrowIcon = styled.img.attrs(() => ({
   src: leftArrowIcon,
+  alt: "left arrow icon",
 }))``;
 
 const RightArrowIcon = styled.img.attrs(() => ({
   src: rightArrowIcon,
+  alt: "right arrow icon",
 }))``;
 
 const SketchLogo = styled.img.attrs(() => ({
   src: sketchLogoSrc,
+  alt: "Sketch logo",
 }))`
   height: 27px;
   width: auto;
@@ -26,6 +30,7 @@ const SketchLogo = styled.img.attrs(() => ({
 
 const Separator = styled.img.attrs(() => ({
   src: separator,
+  alt: "separator icon",
 }))`
   display: block;
   height: ${({ theme }) => theme.space[6]};

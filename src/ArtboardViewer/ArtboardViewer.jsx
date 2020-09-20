@@ -69,7 +69,10 @@ const ArtboardViewer = ({ artboards }) => {
         {selectedArtboard?.name}
       </HeaderArtboardViewer>
       <ArtboardWrapper>
-        <Artboard src={selectedArtboard?.files[1]?.url} />
+        <Artboard
+          src={selectedArtboard?.files[1]?.url}
+          alt={`${selectedArtboard?.name} artboard`}
+        />
       </ArtboardWrapper>
     </>
   );
