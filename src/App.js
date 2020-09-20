@@ -8,6 +8,7 @@ import { Theme } from "./Theme";
 import { DocumentViewer } from "./DocumentViewer";
 import { ArtboardViewer } from "./ArtboardViewer";
 import { FETCH_DOCUMENTS_QUERY } from "./fetchDocumentsQuery";
+import { GlobalStyles } from "./globalStyles";
 
 const GRAPHQL_URI = "https://graphql.sketch.cloud/api";
 
@@ -19,7 +20,7 @@ const client = new ApolloClient({
 const Loading = () => <div>loading...</div>;
 
 const AppWrapper = styled.div`
-  margin-top: 64px;
+  margin-top: ${({ theme }) => theme.space[8]};
 `;
 
 const SketchViewer = () => {
@@ -63,17 +64,15 @@ const SketchViewer = () => {
   );
 };
 
-const App = () => {
-  return (
-    <Router>
-      <Theme>
-        <ApolloProvider client={client}>
-          <SketchViewer />
-        </ApolloProvider>
-      </Theme>
-    </Router>
-  );
-};
+const App = () => (
+  <Router>
+    <Theme>
+      <GlobalStyles />
+      <ApolloProvider client={client}>
+        <SketchViewer />
+      </ApolloProvider>
+    </Theme>
+  </Router>
+);
 
-export default App;
-export { client };
+export { App as default, client };

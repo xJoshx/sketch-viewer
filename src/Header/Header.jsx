@@ -17,13 +17,13 @@ import {
 } from "./style";
 
 const HeaderWrapper = styled.nav`
-  padding: ${({ noPadding }) => (noPadding ? 0 : "16px")};
+  padding: ${({ theme, noPadding }) => (noPadding ? 0 : theme.space[3])};
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ theme }) => theme.boxShadow[0]};
   display: flex;
   align-items: center;
-  height: 64px;
+  height: ${({ theme }) => theme.space[8]};
   position: fixed;
   width: 100%;
   top: 0;

@@ -28,16 +28,16 @@ const Separator = styled.img.attrs(() => ({
   src: separator,
 }))`
   display: block;
-  height: 32px;
-  margin: 0 16px;
+  height: ${({ theme }) => theme.space[6]};
+  margin: 0 ${({ theme }) => theme.space[3]};
 `;
 
 const Title = styled.h1`
   font-family: Helvetica;
-  font-size: 16px;
-  color: #000000;
+  font-size: ${({ theme }) => theme.fontSizes.title};
+  color: ${({ theme }) => theme.colors.black};
   letter-spacing: 0;
-  line-height: 16px;
+  line-height: ${({ theme }) => theme.space[3]};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -50,12 +50,12 @@ const TitleWrapper = styled.div`
 
   @media only screen and (max-width: 767px) {
     text-align: right;
-    padding-right: 24px;
+    padding-right: ${({ theme }) => theme.space[5]};
   }
 `;
 
 const HeaderButton = styled.button`
-  padding: 24px;
+  padding: ${({ theme }) => theme.space[5]};
 `;
 
 const NavigationWrapper = styled.nav`
@@ -74,9 +74,9 @@ const NavigationButton = styled.button`
 
 const CurrentPage = styled.span`
   color: ${({ theme }) => theme.colors.grey};
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.space[3]};
   white-space: nowrap;
-  margin: 0 16px;
+  margin: 0 ${({ theme }) => theme.space[3]};
 `;
 
 const HeaderActions = styled.div`
