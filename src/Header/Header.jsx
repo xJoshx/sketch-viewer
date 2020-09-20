@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 import {
   Title,
   NavigationWrapper,
@@ -82,27 +81,24 @@ const HeaderDocumentViewer = ({ children }) => (
 const HeaderArtboardViewer = ({
   children,
   currentPosition,
+  handleClose,
   handleNavigateLeft,
   handleNavigateRight,
-}) => {
-  const history = useHistory();
-
-  return (
-    <HeaderSubpage noPadding>
-      <HeaderActions>
-        <Header.CloseButton onClick={() => history.goBack()} />
-        <Header.Navigation
-          handleNavigateLeft={handleNavigateLeft}
-          handleNavigateRight={handleNavigateRight}
-        >
-          {currentPosition}
-        </Header.Navigation>
-      </HeaderActions>
-      <TitleWrapper>
-        <Header.Title>{children}</Header.Title>
-      </TitleWrapper>
-    </HeaderSubpage>
-  );
-};
+}) => (
+  <HeaderSubpage noPadding>
+    <HeaderActions>
+      <Header.CloseButton onClick={handleClose} />
+      <Header.Navigation
+        handleNavigateLeft={handleNavigateLeft}
+        handleNavigateRight={handleNavigateRight}
+      >
+        {currentPosition}
+      </Header.Navigation>
+    </HeaderActions>
+    <TitleWrapper>
+      <Header.Title>{children}</Header.Title>
+    </TitleWrapper>
+  </HeaderSubpage>
+);
 
 export { HeaderDocumentViewer, HeaderArtboardViewer };

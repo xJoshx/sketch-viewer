@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { HeaderArtboardViewer } from "../Header";
 
 const ArtboardWrapper = styled.div`
@@ -33,6 +33,7 @@ const CurrentPosition = ({ current, total }) => (
 
 const ArtboardViewer = ({ artboards }) => {
   const { artboardId } = useParams();
+  const history = useHistory();
   const [currentArtboardPosition, setCurrentArtboardPosition] = useState(
     artboards.findIndex(({ name }) => name === artboardId)
   );
@@ -63,6 +64,7 @@ const ArtboardViewer = ({ artboards }) => {
             total={artboards.length}
           />
         }
+        handleClose={() => history.goBack()}
         handleNavigateLeft={handleNavigateLeft}
         handleNavigateRight={handleNavigateRight}
       >
