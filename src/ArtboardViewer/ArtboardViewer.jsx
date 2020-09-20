@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { HeaderArtboardViewer } from "../Header";
@@ -41,7 +42,7 @@ const ArtboardViewer = ({ artboards }) => {
 
   useEffect(() => {
     setSelectedArtboard(artboards[currentArtboardPosition]);
-  }, [currentArtboardPosition]);
+  }, [currentArtboardPosition]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleNavigateLeft = () => {
     if (currentArtboardPosition === 0) return;
@@ -72,6 +73,19 @@ const ArtboardViewer = ({ artboards }) => {
       </ArtboardWrapper>
     </>
   );
+};
+
+ArtboardViewer.propTypes = {
+  artboards: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      files: PropTypes.arrayOf(
+        PropTypes.shape({
+          url: PropTypes.string,
+        })
+      ),
+    })
+  ),
 };
 
 export { ArtboardViewer };

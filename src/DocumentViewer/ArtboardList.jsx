@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const ArtboardListLayout = styled.div`
   display: grid;
@@ -53,21 +54,29 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const ArtboardListItem = ({ documentId, name, src }) => {
-  return (
-    <StyledLink to={`/${documentId}/artboard/${name}`}>
-      <ThumbnailWrapper>
-        <Thumbnail src={src} />
-      </ThumbnailWrapper>
-      <ArtboardName>{name}</ArtboardName>
-    </StyledLink>
-  );
-};
+const ArtboardListItem = ({ documentId, name, src }) => (
+  <StyledLink to={`/${documentId}/artboard/${name}`}>
+    <ThumbnailWrapper>
+      <Thumbnail src={src} />
+    </ThumbnailWrapper>
+    <ArtboardName>{name}</ArtboardName>
+  </StyledLink>
+);
 
 const ArtboardList = ({ children }) => (
   <ArtboardListLayout>{children}</ArtboardListLayout>
 );
 
 ArtboardList.Item = ArtboardListItem;
+
+ArtboardListItem.propTypes = {
+  documentId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+};
+
+ArtboardList.propTypes = {
+  children: PropTypes.node,
+};
 
 export { ArtboardList };

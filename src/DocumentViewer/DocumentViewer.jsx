@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import { ArtboardList } from "./ArtboardList";
 import { HeaderDocumentViewer } from "../Header";
 
@@ -20,6 +21,20 @@ const DocumentViewer = ({ documentName, artboards }) => {
       </ArtboardList>
     </>
   );
+};
+
+DocumentViewer.propTypes = {
+  documentName: PropTypes.string,
+  artboards: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      files: PropTypes.arrayOf(
+        PropTypes.shape({
+          url: PropTypes.string,
+        })
+      ),
+    })
+  ),
 };
 
 export { DocumentViewer };
