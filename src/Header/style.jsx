@@ -41,10 +41,6 @@ const Title = styled.h1`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  @media only screen and (max-width: 414px) {
-    max-width: 120px;
-  }
 `;
 
 const TitleWrapper = styled.div`
