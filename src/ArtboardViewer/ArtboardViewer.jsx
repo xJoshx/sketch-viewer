@@ -32,7 +32,7 @@ const CurrentPosition = ({ current, total }) => (
 );
 
 const ArtboardViewer = ({ artboards }) => {
-  const { artboardId } = useParams();
+  const { artboardId, documentId } = useParams();
   const history = useHistory();
   const [currentArtboardPosition, setCurrentArtboardPosition] = useState(
     artboards.findIndex(({ name }) => name === artboardId)
@@ -47,11 +47,13 @@ const ArtboardViewer = ({ artboards }) => {
 
   const handleNavigateLeft = () => {
     if (currentArtboardPosition === 0) return;
+    history.push(artboards[currentArtboardPosition - 1].name);
     setCurrentArtboardPosition(currentArtboardPosition - 1);
   };
 
   const handleNavigateRight = () => {
     if (currentArtboardPosition + 1 === artboards.length) return;
+    history.push(artboards[currentArtboardPosition + 1].name);
     setCurrentArtboardPosition(currentArtboardPosition + 1);
   };
 
@@ -64,7 +66,7 @@ const ArtboardViewer = ({ artboards }) => {
             total={artboards.length}
           />
         }
-        handleClose={() => history.goBack()}
+        handleClose={() => history.push(`/${documentId}`)}
         handleNavigateLeft={handleNavigateLeft}
         handleNavigateRight={handleNavigateRight}
       >
