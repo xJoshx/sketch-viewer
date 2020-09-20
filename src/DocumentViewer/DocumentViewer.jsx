@@ -9,12 +9,12 @@ const DocumentViewer = ({ documentName, artboards }) => {
     <>
       <HeaderDocumentViewer>{documentName}</HeaderDocumentViewer>
       <ArtboardList>
-        {artboards.map(({ name, files }) => (
+        {artboards.map((artboard) => (
           <ArtboardList.Item
-            key={name}
+            key={artboard?.name}
             documentId={documentId}
-            name={name}
-            src={files[0].url}
+            name={artboard?.name}
+            src={artboard?.files[0].url}
           />
         ))}
       </ArtboardList>

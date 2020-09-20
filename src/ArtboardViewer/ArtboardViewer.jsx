@@ -65,10 +65,10 @@ const ArtboardViewer = ({ artboards }) => {
         handleNavigateLeft={handleNavigateLeft}
         handleNavigateRight={handleNavigateRight}
       >
-        {selectedArtboard.name}
+        {selectedArtboard?.name}
       </HeaderArtboardViewer>
       <ArtboardWrapper>
-        <Artboard src={selectedArtboard.files[1].url} />
+        <Artboard src={selectedArtboard?.files[1]?.url} />
       </ArtboardWrapper>
     </>
   );
